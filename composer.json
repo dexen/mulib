@@ -1,5 +1,6 @@
 {
 	"name": "successup/mulib",
+	"license": "proprietary",
 	"homepage": "https://github.com/dexen/mulib",
 	"type": "library",
 	"autoload": {
