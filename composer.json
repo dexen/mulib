@@ -1,11 +1,17 @@
 {
 	"name": "successup/mulib",
+	"description": "Micro utilities. UUID generators and debug.",
 	"license": "proprietary",
 	"authors": [
 		{
 			"name": "dexen deVries",
 			"email": "dexen.devries@gmail.com"
 		}
+	],
+	"keywords": [
+		"utils",
+		"uuid",
+		"debug"
 	],
 	"homepage": "https://github.com/dexen/mulib",
 	"type": "library",
