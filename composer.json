@@ -1,6 +1,12 @@
 {
 	"name": "successup/mulib",
 	"license": "proprietary",
+	"authors": [
+		{
+			"name": "dexen deVries",
+			"email": "dexen.devries@gmail.com"
+		}
+	],
 	"homepage": "https://github.com/dexen/mulib",
 	"type": "library",
 	"autoload": {
