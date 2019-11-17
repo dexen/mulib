@@ -16,6 +16,19 @@ class Uuid
 				bin2hex(random_bytes(6)) ] );
 	}
 
+	static
+	function generateUuidV4() : string
+	{
+			# 16 bytes of UUID + 2 bytes for the four separators
+			# the bin2hex() expands it to twice the size
+		$hex = bin2hex(
+					(random_bytes(16+2)
+					& "\xff\xff\xff\xff\xff\xff\xff\x0f\xff\xf3\xff\xff\xff\xff\xff\xff\xff\xff")
+					| "\0\0\0\0\0\0\0\x40\0\x08\0\0\0\0\0\0\0\0" );
+		$hex[8] = $hex[13] = $hex[18] = $hex[23] = '-';
+		return $hex;
+	}
+
 		# a quick-n-dirty check
 		# for uuid-like string
 		# does not check semantic rules
