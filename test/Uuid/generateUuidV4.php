@@ -54,4 +54,34 @@ class Test_Uuid_generateUuidV4 extends Testcase
 			$dd = $bb >> 14;
 			$this->assertIntEquals('uuid variant bits', $dd, $pattern); }
 	}
+
+	function test_v4_timing_old()
+	{
+		$cnt = 1000 * 1000;
+
+		$startS = microtime($get_as_float = true);
+
+		for ($n = 0; $n < $cnt; ++$n)
+			$str = Uuid::generateUuidV4_old();
+
+		$endS = microtime($get_as_float = true);
+
+		$totalS = $endS - $startS;
+		printf('seconds: %f; final uuid: "%s"' .PHP_EOL, $totalS, $str);
+	}
+
+	function test_v4_timing()
+	{
+		$cnt = 1000 * 1000;
+
+		$startS = microtime($get_as_float = true);
+
+		for ($n = 0; $n < $cnt; ++$n)
+			$str = Uuid::generateUuidV4();
+
+		$endS = microtime($get_as_float = true);
+
+		$totalS = $endS - $startS;
+		printf('seconds: %f; final uuid: "%s"' .PHP_EOL, $totalS, $str);
+	}
 }
