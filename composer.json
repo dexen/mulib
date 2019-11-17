@@ -16,6 +16,6 @@
 	"homepage": "https://github.com/dexen/mulib",
 	"type": "library",
 	"autoload": {
-		"psr-4": {"Successup\\Mulib\\": "src/"}
+		"psr-4": {"dexen\\mulib\\": "src/"}
 	}
 }

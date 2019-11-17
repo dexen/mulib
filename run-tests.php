@@ -27,7 +27,7 @@ foreach ($a as $pn)
 	require $pn;
 
 $a = get_declared_classes();
-$tc = Successup\Mulib\Testcase::class;
+$tc = dexen\mulib\Testcase::class;
 foreach ($a as $className)
 	if (is_subclass_of($className, $tc))
 		processTC($className);

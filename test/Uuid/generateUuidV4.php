@@ -1,6 +1,6 @@
 <?php
 
-namespace Successup\Mulib;
+namespace dexen\mulib;
 
 class Test_Uuid_generateUuidV4 extends Testcase
 {
