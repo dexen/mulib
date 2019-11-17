@@ -5,7 +5,7 @@ namespace Successup\Mulib;
 class Uuid
 {
 	static
-	function generateUuidV4() : string
+	function generateUuidV4_old() : string
 	{
 		return implode('-',
 			[
