@@ -8,6 +8,9 @@ require 'src/Testcase.php';
 require 'src/AssertionFailed.php';
 require 'src/Uuid.php';
 require 'src/Lz4.php';
+require 'src/Lz4Frame.php';
+require 'src/MalformedLz4DataException.php';
+require 'src/Debug.php';
 
 function processTC(string $name)
 {
