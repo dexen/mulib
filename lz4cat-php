@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+require 'src/Lz4.php';
+require 'src/MalformedLz4DataException.php';
+require 'src/Lz4/Frame.php';
+require 'src/Lz4/DataBlock.php';
+
+$a = array_slice($argv, 1);
+if (empty($a))
+	$a = [ '/dev/stdin' ];
+foreach ($a as $filePN)
+	echo dexen\mulib\Lz4::decompress(file_get_contents($filePN));
