@@ -13,6 +13,7 @@ class Lz4
 				iterator_to_array((new Lz4\Frame($input))->dataBlocks()) ) );
 	}
 
+		# https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md
 	static
 	function decompressBlock(Lz4\DataBlock $DB) : string
 	{
@@ -44,6 +45,7 @@ class Lz4
 
 			$ret .= $literals;
 
+				# https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md#end-of-block-restrictions
 			if ($pos < $blockSize) {
 					# the matchCopyOperation
 				$offset = unpack('v', substr($payload, $pos, 2))[1];
@@ -62,6 +64,7 @@ class Lz4
 				case 0:
 					$matchlength += $fieldB; }
 
+					# h/t to http://ticki.github.io/blog/how-lz4-works/
 				$to_repeat = substr($ret, -$offset);
 				$repeated = str_repeat($to_repeat, (int)ceil(1.0 * $matchlength / $offset));
 				$to_append = substr($repeated, 0, $matchlength);
