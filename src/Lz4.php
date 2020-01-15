@@ -65,7 +65,7 @@ class Lz4
 					$matchlength += $fieldB; }
 
 					# h/t to http://ticki.github.io/blog/how-lz4-works/
-				$to_repeat = substr($ret, -$offset, $matchlength);
+				$to_repeat = substr($ret, -$offset, min($matchlength, $offset));
 				$num = (int)ceil(1.0 * $matchlength / $offset);
 				if ($num > 1)
 					$repeated = str_repeat($to_repeat, $num);
