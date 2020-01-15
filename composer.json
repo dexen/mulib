@@ -1,6 +1,6 @@
 {
 	"name": "dexen/mulib",
-	"description": "Micro utilities. UUID generators and debug.",
+	"description": "Micro utilities. UUID generators, debug, LZ4 decompression.",
 	"license": "MIT",
 	"authors": [
 		{
