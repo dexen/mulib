@@ -67,6 +67,8 @@ class Lz4
 					# h/t to http://ticki.github.io/blog/how-lz4-works/
 				$sniplen = ($matchlength < $offset) ? $matchlength : $offset;
 				$to_repeat = substr($ret, -$offset, $sniplen);
+					# >which means that later bytes to copy are not yet decoded.
+					# >This is called an "overlap match", and must be handled with special care
 				$num = (int)ceil(1.0 * $matchlength / $offset);
 				if ($num > 1)
 					$repeated = str_repeat($to_repeat, $num);
