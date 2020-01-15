@@ -2,6 +2,6 @@
 
 namespace dexen\mulib;
 
-class MalformedLz4DataException extends RuntimeException
+class MalformedLz4DataException extends \RuntimeException
 {
 }
