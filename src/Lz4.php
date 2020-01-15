@@ -38,8 +38,9 @@ class Lz4
 					$numBytes += ($nn = ord($payload[$pos++]));
 				} while ($nn === 255);
 			default:	# a literal number of bytes
+				$numBytes += $fieldA;
 			case 0:	# no literal
-				$numBytes += $fieldA; }
+				; }
 			$literals = substr($payload, $pos, $numBytes);
 			$pos += $numBytes;
 
@@ -61,8 +62,9 @@ class Lz4
 						$matchlength += ($nn = ord($payload[$pos++]));
 					} while ($nn === 255);
 				default:
+					$matchlength += $fieldB;
 				case 0:
-					$matchlength += $fieldB; }
+					; }
 
 					# h/t to http://ticki.github.io/blog/how-lz4-works/
 				$sniplen = ($matchlength < $offset) ? $matchlength : $offset;
