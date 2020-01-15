@@ -55,7 +55,7 @@ class Test_Lz4_decompress extends Testcase
 	function test_ecompression()
 	{
 		foreach ($this->testContent as $tuple)
-			$this->assertStringEquals(
+			$this->assertStringEqualsPositionWise(
 				sprintf('decompressed data matches original data of file "%s"', $tuple[0]),
 				$tuple[3], $tuple[1]);
 	}
