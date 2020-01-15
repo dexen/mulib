@@ -2,9 +2,6 @@
 
 namespace dexen\mulib;
 
-use dexen\mulib\Lz4\Frame;
-use dexen\mulib\Lz4\DataBlock;
-
 class Lz4
 {
 	static
@@ -13,7 +10,7 @@ class Lz4
 		return implode(
 			array_map(
 				[__CLASS__, 'decompressBlock',],
-				(new Lz4Frame($input))->dataBlocks() ) );
+				iterator_to_array((new Lz4\Frame($input))->dataBlocks()) ) );
 	}
 
 	static
