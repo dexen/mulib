@@ -2,6 +2,7 @@
 
 namespace dexen\mulib;
 
+use dexen\mulib\Lz4\Frame;
 class Lz4
 {
 	static

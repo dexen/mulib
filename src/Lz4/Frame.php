@@ -1,8 +1,10 @@
 <?php
 
-namespace dexen\mulib;
+namespace dexen\mulib\Lz4;
 
-class Lz4Frame
+use dexen\mulib\MalformedLz4DataException;
+
+class Frame
 {
 	const LZ4_MAGIC_NUMBER = 0x184D2204;
 	const LZ4_FRAME_VERSION = 0x01;
@@ -14,6 +16,9 @@ class Lz4Frame
 	protected $DictID;
 
 	protected $HC;
+
+	protected $input;
+	protected $pos;
 	
 	function __construct(string $input)
 	{
@@ -91,5 +96,17 @@ class Lz4Frame
 			$this->HC = unpack('C', $bytes);
 			$frame_descriptor_len += $HC_len;
 			$pos += $HC_len; }
+
+		$this->input = $input;
+		$this->pos = $pos;
+	}
+
+	function dataBlocks() : \Generator /* of DataBlock */
+	{
+		while (true) {
+			$DB = new DataBlock(substr($this->input, $this->pos));
+			yield $DB;
+			$this->pos += $DB->blockOuternSize();
+		}
 	}
 }
