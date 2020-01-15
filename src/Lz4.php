@@ -66,7 +66,11 @@ class Lz4
 
 					# h/t to http://ticki.github.io/blog/how-lz4-works/
 				$to_repeat = substr($ret, -$offset);
-				$repeated = str_repeat($to_repeat, (int)ceil(1.0 * $matchlength / $offset));
+				$num = (int)ceil(1.0 * $matchlength / $offset);
+				if ($num > 1)
+					$repeated = str_repeat($to_repeat, $num);
+				else
+					$repeated = $to_repeat;
 				$to_append = substr($repeated, 0, $matchlength);
 
 				$ret .= $to_append; } }
