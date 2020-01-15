@@ -65,13 +65,17 @@ class Lz4
 					$matchlength += $fieldB; }
 
 					# h/t to http://ticki.github.io/blog/how-lz4-works/
-				$to_repeat = substr($ret, -$offset, ($matchlength < $offset) ? $matchlength : $offset);
+				$sniplen = ($matchlength < $offset) ? $matchlength : $offset;
+				$to_repeat = substr($ret, -$offset, $sniplen);
 				$num = (int)ceil(1.0 * $matchlength / $offset);
 				if ($num > 1)
 					$repeated = str_repeat($to_repeat, $num);
 				else
 					$repeated = $to_repeat;
-				$to_append = substr($repeated, 0, $matchlength);
+				if (($num * $sniplen) === $matchlength)
+					$to_append = $repeated;
+				else
+					$to_append = substr($repeated, 0, $matchlength);
 
 				$ret .= $to_append; } }
 
