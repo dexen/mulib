@@ -104,7 +104,7 @@ class Frame
 	function dataBlocks() : \Generator /* of DataBlock */
 	{
 		while (true) {
-			$DB = new DataBlock(substr($this->input, $this->pos));
+			$DB = new DataBlock(substr($this->input, $this->pos), $this->FLG['BChecksum']);
 			yield $DB;
 			$this->pos += $DB->blockOuternSize();
 		}
