@@ -53,6 +53,11 @@ class Testcase
 		$this->assertDataType($subject, $v, 'string');
 
 		if ($v !== $expected) {
+echo 'EXPECTED:', PHP_EOL;
+echo $expected, PHP_EOL, '========', PHP_EOL;
+echo 'ACTUAL:', PHP_EOL;
+echo $v, PHP_EOL, '======', PHP_EOL;
+
 			throw new AssertionFailed(
 				sprintf('%s === %s, got %s',
 					$subject, $expected, $v ) ); }
