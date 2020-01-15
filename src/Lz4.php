@@ -26,7 +26,7 @@ class Lz4
 		$pos = 0;
 		$blockSize = $DB->blockSize();
 		while ($pos < $blockSize) {
-			$token = unpack('C', substr($payload, $pos++, 1))[1];
+			$token = ord($payload[$pos++]);
 
 			$fieldA = ($token >> 4) & 0xf;
 			$fieldB = ($token >> 0) & 0xf;
@@ -35,7 +35,7 @@ class Lz4
 			switch ($fieldA) {
 			case 15: # add some more bytes to indicate the full length
 				do {
-					$numBytes += ($nn = unpack('C', substr($payload, $pos++, 1))[1]);
+					$numBytes += ($nn = ord($payload[$pos++]));
 				} while ($nn === 255);
 			default:	# a literal number of bytes
 			case 0:	# no literal
@@ -48,8 +48,8 @@ class Lz4
 				# https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md#end-of-block-restrictions
 			if ($pos < $blockSize) {
 					# the matchCopyOperation
-				$offset = unpack('v', substr($payload, $pos, 2))[1];
-				$pos += 2;
+				$offset = $P = ord($payload[$pos++]);
+				$offset += $Q = 256 * ord($payload[$pos++]);
 				if ($offset === 0)
 					throw new MalformedLz4DataException('offset 0');
 
@@ -58,7 +58,7 @@ class Lz4
 				switch ($fieldB) {
 				case 15:
 					do {
-						$matchlength += ($nn = unpack('C', substr($payload, $pos++, 1))[1]);
+						$matchlength += ($nn = ord($payload[$pos++]));
 					} while ($nn === 255);
 				default:
 				case 0:
