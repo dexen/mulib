@@ -7,6 +7,7 @@ ini_set('display_errors', true);
 require 'src/Testcase.php';
 require 'src/AssertionFailed.php';
 require 'src/Uuid.php';
+require 'src/Lz4.php';
 
 function processTC(string $name)
 {

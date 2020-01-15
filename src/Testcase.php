@@ -14,6 +14,16 @@ class Testcase
 					$subject, $expected, $v ) );
 	}
 
+	function assertStringEquals(string $subject, $v, string $expected)
+	{
+		$this->assertDataType($subject, $v, 'string');
+
+		if ($v !== $expected)
+			throw new AssertionFailed(
+				sprintf('%s === %s, got %s',
+					$subject, $expected, $v ) );
+	}
+
 	function assertDataType(string $subject, $v, string $expected)
 	{
 		if (gettype($v) === $expected)

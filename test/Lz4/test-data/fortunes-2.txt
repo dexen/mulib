@@ -1,0 +1,39 @@
+Unix is a lot more complicated (than CP/M) of course -- the typical Unix
+hacker can never remember what the PRINT command is called this week --
+but when it gets right down to it, Unix is a glorified video game.
+People don't do serious work on Unix systems; they send jokes around the
+world on USENET or write adventure games and research papers.
+                -- E. Post
+                "Real Programmers Don't Use Pascal", Datamation, 7/83
+%
+Ever Onward!  Ever Onward!
+That's the sprit that has brought us fame.
+We're big but bigger we will be,
+We can't fail for all can see, that to serve humanity
+Has been our aim.
+Our products now are known in every zone.
+Our reputation sparkles like a gem.
+We've fought our way thru
+And new fields we're sure to conquer, too
+For the Ever Onward IBM!
+                -- Ever Onward, from the 1940 IBM Songbook
+%
+There is something fascinating about science.  One gets such wholesale
+returns of conjecture out of such a trifling investment of fact.
+                -- Mark Twain
+%
+                The Three Major Kind of Tools
+
+* Tools for hittings things to make them loose or to tighten them up or
+  jar their many complex, sophisticated electrical parts in such a
+  manner that they function perfectly.  (These are your hammers, maces,
+  bludgeons, and truncheons.)
+
+* Tools that, if dropped properly, can penetrate your foot.  (Awls)
+
+* Tools that nobody should ever use because the potential danger is far
+  greater than the value of any project that could possibly result.
+  (Power saws, power drills, power staplers, any kind of tool that uses
+  any kind of power more advanced than flashlight batteries.)
+                -- Dave Barry, "The Taming of the Screw"
+%
