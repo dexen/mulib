@@ -19,6 +19,20 @@ class Debug
 	}
 
 	static
+	function hd($v)
+	{
+		if (is_string($v))
+			$a = unpack('C*', $v);
+		elseif (is_array($v))
+			$a = $v;
+		else
+			throw new Exception('unsupported type: ' .get_type($v));
+
+		$aa = array_map('dechex', $a);
+		td($aa);
+	}
+
+	static
 	function nicePhpScriptPathname(string $filePN = null) : ?string
 	{
 		if ($filePN === null)

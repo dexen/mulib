@@ -22,6 +22,7 @@ function processTC(string $name)
 
 function tp(...$a) { array_map('var_dump', $a); }
 function td(...$a) { array_map('var_dump', $a); die('td()'); }
+function hd($v) { dexen\mulib\Debug::hd($v); }
 
 $a = glob('test/*/*.php');	# yes yes i know
 foreach ($a as $pn)
