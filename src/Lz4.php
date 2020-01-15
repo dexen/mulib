@@ -16,6 +16,9 @@ class Lz4
 	static
 	function decompressBlock(Lz4\DataBlock $DB) : string
 	{
+		if ($DB->isUncompressed())
+			return $DB->payload();
+		else
 return 'foobar';
 	}
 }
