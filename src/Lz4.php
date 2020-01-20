@@ -49,6 +49,7 @@ class Lz4
 				# https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md#end-of-block-restrictions
 			if ($pos < $blockSize) {
 					# the matchCopyOperation
+					# offset is encoded as little-endian uint16
 				$offset = ord($payload[$pos++]);
 				$offset += 256 * ord($payload[$pos++]);
 				if ($offset === 0)
