@@ -49,8 +49,8 @@ class Lz4
 				# https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md#end-of-block-restrictions
 			if ($pos < $blockSize) {
 					# the matchCopyOperation
-				$offset = $P = ord($payload[$pos++]);
-				$offset += $Q = 256 * ord($payload[$pos++]);
+				$offset = ord($payload[$pos++]);
+				$offset += 256 * ord($payload[$pos++]);
 				if ($offset === 0)
 					throw new MalformedLz4DataException('offset 0');
 
