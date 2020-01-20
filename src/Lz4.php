@@ -79,11 +79,9 @@ class Lz4
 					$repeated = str_repeat($to_repeat, $num);
 
 					if (($num * $offset) === $matchlength)
-						$to_append = $repeated;
+						$ret .= $repeated;
 					else
-						$to_append = substr($repeated, 0, $matchlength);
-
-					$ret .= $to_append; } } }
+						$ret .= substr($repeated, 0, $matchlength); } } }
 
 		return $ret;
 	}
