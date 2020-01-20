@@ -73,13 +73,13 @@ class Lz4
 				else {
 						# >which means that later bytes to copy are not yet decoded.
 						# >This is called an "overlap match", and must be handled with special care
-					$to_repeat = substr($ret, -$offset, $offset);
+					$to_repeat = substr($ret, -$offset);
 					$num = (int)ceil(1.0 * $matchlength / $offset);
 
-					if ($num > 1)
-						$repeated = str_repeat($to_repeat, $num);
-					else
+					if ($num === 1)
 						$repeated = $to_repeat;
+					else
+						$repeated = str_repeat($to_repeat, $num);
 
 					if (($num * $offset) === $matchlength)
 						$to_append = $repeated;
