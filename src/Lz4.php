@@ -68,21 +68,25 @@ class Lz4
 					; }
 
 					# h/t to http://ticki.github.io/blog/how-lz4-works/
-				$sniplen = ($matchlength < $offset) ? $matchlength : $offset;
-				$to_repeat = substr($ret, -$offset, $sniplen);
-					# >which means that later bytes to copy are not yet decoded.
-					# >This is called an "overlap match", and must be handled with special care
-				$num = (int)ceil(1.0 * $matchlength / $offset);
-				if ($num > 1)
-					$repeated = str_repeat($to_repeat, $num);
-				else
-					$repeated = $to_repeat;
-				if (($num * $sniplen) === $matchlength)
-					$to_append = $repeated;
-				else
-					$to_append = substr($repeated, 0, $matchlength);
+				if ($matchlength <= $offset)
+					$ret .= substr($ret, -$offset, $matchlength);
+				else {
+						# >which means that later bytes to copy are not yet decoded.
+						# >This is called an "overlap match", and must be handled with special care
+					$to_repeat = substr($ret, -$offset, $offset);
+					$num = (int)ceil(1.0 * $matchlength / $offset);
 
-				$ret .= $to_append; } }
+					if ($num > 1)
+						$repeated = str_repeat($to_repeat, $num);
+					else
+						$repeated = $to_repeat;
+
+					if (($num * $offset) === $matchlength)
+						$to_append = $repeated;
+					else
+						$to_append = substr($repeated, 0, $matchlength);
+
+					$ret .= $to_append; } } }
 
 		return $ret;
 	}
