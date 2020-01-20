@@ -76,10 +76,7 @@ class Lz4
 					$to_repeat = substr($ret, -$offset);
 					$num = (int)ceil(1.0 * $matchlength / $offset);
 
-					if ($num === 1)
-						$repeated = $to_repeat;
-					else
-						$repeated = str_repeat($to_repeat, $num);
+					$repeated = str_repeat($to_repeat, $num);
 
 					if (($num * $offset) === $matchlength)
 						$to_append = $repeated;
