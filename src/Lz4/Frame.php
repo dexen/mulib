@@ -105,7 +105,7 @@ class Frame
 	{
 		$pos = $this->pos;
 		while (true) {
-			$DB = new DataBlock(substr($this->input, $pos), $this->FLG['BChecksum']);
+			$DB = new DataBlock($this->input, $pos, $this->FLG['BChecksum']);
 			if ($DB->blockSize() === 0)
 				return;
 			yield $DB;

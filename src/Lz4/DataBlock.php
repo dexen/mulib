@@ -14,13 +14,13 @@ class DataBlock
 	const LZ4_BLOCK_HEADER_LEN = 4;
 	const LZ4_BLOCK_CHECKSUM_LEN = 4;
 
-	function __construct(string $data, bool $hasBlockChecksum)
+	function __construct(string $buffer, int $pos, bool $hasBlockChecksum)
 	{
-		$blockSize = unpack('V', $data)[1];
+		$blockSize = unpack('V', $buffer, $pos)[1];
 		$this->isUncompressed = $blockSize & (~0x7fffffff);
 		$this->blockSize = $blockSize & 0x7fffffff;
 
-		$this->payload = substr($data, static::LZ4_BLOCK_HEADER_LEN, $this->blockSize);
+		$this->payload = substr($buffer, $pos + static::LZ4_BLOCK_HEADER_LEN, $this->blockSize);
 
 		$this->hasBlockChecksum = $hasBlockChecksum;
 		if ($this->hasBlockChecksum)
