@@ -71,14 +71,10 @@ class Lz4
 						# >which means that later bytes to copy are not yet decoded.
 						# >This is called an "overlap match", and must be handled with special care
 					$to_repeat = substr($ret, -$offset);
-					$num = (int)ceil(1.0 * $len / $offset);
 
-					$repeated = str_repeat($to_repeat, $num);
+					$repeated = str_repeat($to_repeat, ceil(1.0 * $len / $offset));
 
-					if (($num * $offset) === $len)
-						$ret .= $repeated;
-					else
-						$ret .= substr($repeated, 0, $len); } } }
+					$ret .= substr($repeated, 0, $len); } } }
 
 		return $ret;
 	}
