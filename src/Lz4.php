@@ -39,12 +39,11 @@ class Lz4
 				} while ($nn === 255);
 			default:	# a literal number of bytes
 				$numBytes += $fieldA;
+				$literals = substr($payload, $pos, $numBytes);
+				$pos += $numBytes;
+				$ret .= $literals;
 			case 0:	# no literal
 				; }
-			$literals = substr($payload, $pos, $numBytes);
-			$pos += $numBytes;
-
-			$ret .= $literals;
 
 				# https://github.com/lz4/lz4/blob/dev/doc/lz4_Block_format.md#end-of-block-restrictions
 			if ($pos < $blockSize) {
