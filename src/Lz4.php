@@ -28,7 +28,11 @@ class Lz4
 		while ($pos < $blockSize) {
 			$token = ord($payload[$pos++]);
 
+				# operation A: a fragment of input $payload to be appended to output $ret
+				# NOP if $fieldA === 0
 			$fieldA = ($token >> 4) & 0xf;
+				# operation B: a fragment of output $ret to be appended to output $ret
+				# the encoding allows repeats via overlapping copy
 			$fieldB = ($token >> 0) & 0xf;
 
 			$numBytes = 0;
