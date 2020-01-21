@@ -39,9 +39,8 @@ class Lz4
 				} while ($nn === 255);
 			default:	# a literal number of bytes
 				$numBytes += $fieldA;
-				$literals = substr($payload, $pos, $numBytes);
+				$ret .= substr($payload, $pos, $numBytes);
 				$pos += $numBytes;
-				$ret .= $literals;
 			case 0:	# no literal
 				; }
 
