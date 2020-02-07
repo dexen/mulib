@@ -10,8 +10,10 @@ function trace(...$a) { fputs(STDERR, implode($a) .PHP_EOL); }
 function td(...$a) { foreach ($a as $v) var_dump($v); die('td()'); }
 function tp(...$a) { foreach ($a as $v) var_dump($v); echo 'tp()', PHP_EOL; }
 
-$a = array_slice($argv, 1);
+$a = [];
+foreach (array_slice($argv, 1) as $filePN)
+	$a[] = fopen($filePN, 'rb');
 if (empty($a))
-	$a = [ '/dev/stdin' ];
-foreach ($a as $filePN)
-	echo dexen\mulib\Lz4::decompress(file_get_contents($filePN));
+	$a = [ STDIN ];
+foreach ($a as $hin)
+	echo dexen\mulib\Lz4::decompress(stream_get_contents($hin));
