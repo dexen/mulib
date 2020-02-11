@@ -9,8 +9,11 @@ class Debug
 	{
 		echo 'td()::';
 		echo '<pre>';
-		foreach ($vars as $v)
+		foreach ($vars as $v) {
+			ob_start();
 			var_dump($v);
+			$str = ob_get_clean();
+			echo H($str); }
 		echo '::td()';
 		echo PHP_EOL;
 #debug_display_backtrace(1);
