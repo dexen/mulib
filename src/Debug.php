@@ -17,7 +17,7 @@ class Debug
 		echo '::td()';
 		echo PHP_EOL;
 #debug_display_backtrace(1);
-		static::displayBacktrace();
+		static::displayBacktrace(2);
 		die();
 	}
 
